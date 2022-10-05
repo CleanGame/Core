@@ -20,24 +20,20 @@ public class ConfigureMapper : IRegister
         var enums = GetType().Assembly.GetTypes()
             .Where(_ => _.IsEnum);
 
-        var methodInfo = config.GetType().GetMethods()
-            .First(_ => _.Name == "NewConfig" && _.IsGenericMethod);
-        var jsonNodeType = typeof(JsonNode);
-        
+        var methodInfo = GetType().GetMethod("AddEnumMapping", BindingFlags.NonPublic | BindingFlags.Instance);
+
         foreach (var item in enums)
         {
-            dynamic callMethod= methodInfo
-                .MakeGenericMethod(jsonNodeType, item)
-                .Invoke(config,null)!;
-
-            //callMethod.MapWith(node => EnumExt.ToEnum(node,item))
-
-            /*config.ForType(typeof(JsonNode), item).Config.
-                
-                Map("", () => EnumExt.ToEnum(source, item));*/
-
-            /*config.NewConfig(typeof(JsonNode), item).Config
-                .MapWith(Enum<PlayerStatusType>());*/
+            methodInfo!
+                .MakeGenericMethod(item)
+                .Invoke(this, new object[] { config });
         }
+    }
+
+    private void AddEnumMapping<T>(TypeAdapterConfig config)
+        where T : struct, IConvertible
+    {
+        config.NewConfig<JsonNode, T>()
+            .MapWith(node => node.ToEnum<T>());
     }
 }
