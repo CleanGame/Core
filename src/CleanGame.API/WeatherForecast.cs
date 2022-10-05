@@ -1,4 +1,4 @@
-namespace CleanGame.UI;
+namespace CleanGame.API;
 
 public class WeatherForecast
 {

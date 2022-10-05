@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using System.Text.Json;
 using CleanGame.Domain.Base;
-using CleanGame.Domain.Entities.Players;
 using StackExchange.Redis.Extensions.System.Text.Json;
 
 namespace CleanGame.Domain.Shared.Converter;

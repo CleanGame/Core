@@ -1,8 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
+using CleanGame.Application.Common.Interfaces;
 using CleanGame.Domain.Entities.Players;
-using CleanGame.Domain.Shared.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
-namespace CleanGame.UI.Controllers;
+namespace CleanGame.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]

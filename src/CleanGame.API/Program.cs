@@ -1,7 +1,7 @@
+using CleanGame.API;
 using CleanGame.Application;
 using CleanGame.Domain;
 using CleanGame.Infra;
-using CleanGame.UI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +25,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.AddInfraApplication();
+app.AddUIApplication();
 
 app.Run();

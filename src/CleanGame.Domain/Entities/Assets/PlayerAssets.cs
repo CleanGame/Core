@@ -1,6 +1,5 @@
 ﻿using CleanGame.Domain.Base;
 using CleanGame.Domain.Entities.Players;
-using CleanGame.Domain.Shared;
 using CleanGame.Domain.Shared.Assets;
 
 namespace CleanGame.Domain.Entities.Assets;
