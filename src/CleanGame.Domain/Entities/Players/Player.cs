@@ -4,6 +4,7 @@ using CleanGame.Domain.Entities.Players.Events;
 
 namespace CleanGame.Domain.Entities.Players;
 
+[CacheEntity("Player")]
 public class Player : AuditableEntity<Player>
 {
     /// <summary>
