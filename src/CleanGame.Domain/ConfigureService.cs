@@ -19,7 +19,7 @@ public static class ConfigureServices
 
     private static void AddMapper(IServiceCollection services)
     {
-        //TypeAdapterConfig.GlobalSettings.Default.MapToConstructor(true);
+        TypeAdapterConfig.GlobalSettings.Default.MapToConstructor(true);
         var config = TypeAdapterConfig.GlobalSettings;
         config.Scan(Assembly.GetExecutingAssembly());
         services.AddSingleton(config);

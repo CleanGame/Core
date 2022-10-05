@@ -25,7 +25,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public async Task<IEnumerable<WeatherForecast>> Get()
     {
-        var p = Player.Create("0912", "test", null);
+        var p = new Player("0912", "test", null);
         p.SetActive();
         await _cache.AddOrUpdateAsync("test", p, TimeSpan.FromHours(1));
         var a = await _cache.GetAsync<Player>("test");

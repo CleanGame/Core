@@ -62,7 +62,7 @@ public class Player : AuditableEntity<Player>
     {
     }
 
-    private Player(string mobile, string nickName, Player parent)
+    public Player(string mobile, string nickName, Player parent)
     {
         Id = Guid.NewGuid();
         Mobile = mobile;
@@ -78,6 +78,12 @@ public class Player : AuditableEntity<Player>
         AddDomainEvent(new PlayerCreatedEvent(Id));
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Player"/> class.
+    /// </summary>
+    /// <remarks>
+    /// Required by json converter
+    /// </remarks>    
     private Player(Guid id, string mobile, string nickName, Player parent, PlayerStatusType status, int level,
         int point, int winGame, int loseGame, DateTime lastActive)
     {
@@ -145,8 +151,4 @@ public class Player : AuditableEntity<Player>
 
     #endregion
 
-    public static Player Create(string mobile, string nickName, Player parent)
-    {
-        return new Player(mobile, nickName, parent);
-    }
 }

@@ -9,11 +9,5 @@ internal static class EnumExt
             ? (T)Enum.Parse(typeof(T), node.ToString())
             : default;
     }
-    
-    public static object? ToEnum(JsonNode node, Type enumType)
-    {
-        return enumType.IsEnum 
-            ? Enum.Parse(enumType, node.ToString())
-            : default;
-    }
+
 }
