@@ -4,7 +4,7 @@ using CleanGame.Domain.Entities.Players.Events;
 
 namespace CleanGame.Domain.Entities.Players;
 
-[CacheEntity("Player")]
+[CacheEntity(nameof(Player))]
 public class Player : AuditableEntity<Player>
 {
     /// <summary>
@@ -44,14 +44,19 @@ public class Player : AuditableEntity<Player>
     public int WinGame { get; private set; }
 
     /// <summary>
-    /// Total lost game
+    /// Total lose game
     /// </summary>
     public int LoseGame { get; private set; }
 
     /// <summary>
-    /// Last active time
+    /// Last player login
     /// </summary>
-    public DateTime LastActive { get; private set; }
+    public DateTime LastLogin { get; private set; }
+
+    /// <summary>
+    /// Last player logout
+    /// </summary>
+    public DateTime LastLogout { get; private set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Player"/> class.
@@ -74,7 +79,7 @@ public class Player : AuditableEntity<Player>
         Point = 0;
         WinGame = 0;
         LoseGame = 0;
-        LastActive = DateTime.UtcNow;
+        LastLogin = DateTime.UtcNow;
 
         AddDomainEvent(new PlayerCreatedEvent(Id));
     }
@@ -86,7 +91,7 @@ public class Player : AuditableEntity<Player>
     /// Required by json converter
     /// </remarks>    
     private Player(Guid id, string mobile, string nickName, Player parent, PlayerStatusType status, int level,
-        int point, int winGame, int loseGame, DateTime lastActive)
+        int point, int winGame, int loseGame, DateTime lastLogin, DateTime lastLogout)
     {
         Id = id;
         Mobile = mobile;
@@ -97,7 +102,8 @@ public class Player : AuditableEntity<Player>
         Point = point;
         WinGame = winGame;
         LoseGame = loseGame;
-        LastActive = lastActive;
+        LastLogin = lastLogin;
+        LastLogout = lastLogout;
     }
 
     #region Status
@@ -138,18 +144,17 @@ public class Player : AuditableEntity<Player>
 
     public void SetPlayerLogin()
     {
-        LastActive = DateTime.UtcNow;
+        LastLogin = DateTime.UtcNow;
 
         AddDomainEvent(new PlayerLoggedInEvent(Id));
     }
 
     public void SetPlayerLogout()
     {
-        LastActive = DateTime.UtcNow;
+        LastLogout = DateTime.UtcNow;
 
         AddDomainEvent(new PlayerLoggedOutEvent(Id));
     }
 
     #endregion
-
 }

@@ -1,7 +1,7 @@
-using CleanGame.Domain.Shared.Interfaces;
+using CleanGame.Application.Common.Interfaces;
 using StackExchange.Redis.Extensions.Core.Abstractions;
 
-namespace CleanGame.Infra.Shared;
+namespace CleanGame.Infra.Shared.Services;
 
 public class CacheService : ICache
 {

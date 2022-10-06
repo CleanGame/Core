@@ -1,5 +1,4 @@
 using CleanGame.Domain.Base.Events;
-using CleanGame.Domain.Base.Events;
 
 namespace CleanGame.Domain.Base;
 

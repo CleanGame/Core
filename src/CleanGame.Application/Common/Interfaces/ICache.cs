@@ -1,4 +1,4 @@
-namespace CleanGame.Domain.Shared.Interfaces;
+namespace CleanGame.Application.Common.Interfaces;
 
 public interface ICache
 {

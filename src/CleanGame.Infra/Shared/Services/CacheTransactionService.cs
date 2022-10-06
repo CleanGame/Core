@@ -1,7 +1,7 @@
-using CleanGame.Domain.Shared.Interfaces;
+using CleanGame.Application.Common.Interfaces;
 using StackExchange.Redis;
 
-namespace CleanGame.Infra.Shared;
+namespace CleanGame.Infra.Shared.Services;
 
 public class CacheTransactionService : ICacheTransaction
 {

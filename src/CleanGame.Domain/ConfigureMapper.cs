@@ -1,6 +1,4 @@
 using System.Reflection;
-using CleanGame.Domain.Entities.Players.Enums;
-using CleanGame.Domain.Shared.Extensions;
 
 namespace CleanGame.Domain;
 
@@ -8,10 +6,6 @@ public class ConfigureMapper : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        //config.Default.EnumMappingStrategy(EnumMappingStrategy.ByName);
-        /*config.NewConfig<JsonNode, PlayerStatusType>()
-            .MapWith(node => node.ToEnum<PlayerStatusType>());*/
-
         SearchForEnums(config);
     }
 

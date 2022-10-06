@@ -1,4 +1,4 @@
-namespace CleanGame.UI;
+namespace CleanGame.API;
 
 public static class ConfigureServices
 {
@@ -12,4 +12,10 @@ public static class ConfigureServices
         return services;
     }
 
+    public static WebApplication AddUIApplication(this WebApplication app)
+    {
+        app.MapControllers();
+
+        return app;
+    }
 }
