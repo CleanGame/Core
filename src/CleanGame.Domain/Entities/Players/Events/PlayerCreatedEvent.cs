@@ -2,11 +2,11 @@
 
 namespace CleanGame.Domain.Entities.Players.Events;
 
-public class PlayerCreatedEvent : DomainEvent
+public class PlayerCreatedEvent : IDomainEvent
 {
     public Guid PlayerId { get; private set; }
 
-    public PlayerCreatedEvent(Guid playerId)
+    public PlayerCreatedEvent(Guid playerId) 
     {
         PlayerId = playerId;
     }

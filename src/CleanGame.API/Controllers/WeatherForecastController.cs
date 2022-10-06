@@ -1,4 +1,4 @@
-using CleanGame.Application.Common.Interfaces;
+using CleanGame.Application.Shared.Interfaces;
 using CleanGame.Domain.Entities.Players;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +25,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public async Task<IEnumerable<WeatherForecast>> Get()
     {
-        var p = new Player("0912", "test", null);
+        var p = new Player("test", null);
         p.SetActive();
         await _cache.AddOrUpdateAsync("test", p, TimeSpan.FromHours(1));
         var a = await _cache.GetAsync<Player>("test");

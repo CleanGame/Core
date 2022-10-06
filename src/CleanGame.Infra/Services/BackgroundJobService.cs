@@ -1,8 +1,8 @@
 using System.Linq.Expressions;
-using CleanGame.Application.Common.Interfaces;
+using CleanGame.Application.Shared.Interfaces;
 using Hangfire;
 
-namespace CleanGame.Infra.Shared.Services;
+namespace CleanGame.Infra.Services;
 
 public class BackgroundJobService : IBackgroundJobService
 {

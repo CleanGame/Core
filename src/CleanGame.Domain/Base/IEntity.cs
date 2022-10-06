@@ -5,6 +5,6 @@ namespace CleanGame.Domain.Base;
 public interface IEntity
 {
     Guid Id { get; }
-    IReadOnlyCollection<DomainEvent> DomainEvents { get; }
+    IReadOnlyCollection<IDomainEvent> DomainEvents { get; }
     void ClearDomainEvents();
 }

@@ -1,8 +1,8 @@
-using CleanGame.Application.Common.Interfaces;
+using CleanGame.Application.Shared.Interfaces;
+using CleanGame.Domain.Shared.Interfaces;
+using CleanGame.Infra.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using CleanGame.Infra.Shared;
-using CleanGame.Infra.Shared.Services;
 using Hangfire;
 using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Builder;
@@ -20,6 +20,7 @@ public static class ConfigureServices
         services.AddStackExchangeRedisExtensions<SystemTextJsonSerializer>(redisConfiguration);
 
         services.AddSingleton<ICache, CacheService>();
+        services.AddSingleton<IDateTime, DateTimeService>();
 
         AddHangfire(services, configuration);        
         

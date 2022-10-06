@@ -7,10 +7,6 @@ namespace CleanGame.Domain.Entities.Players;
 [CacheEntity(nameof(Player))]
 public class Player : AuditableEntity<Player>
 {
-    /// <summary>
-    /// Player mobile
-    /// </summary>
-    public string Mobile { get; private set; }
 
     /// <summary>
     /// Parent player
@@ -68,10 +64,9 @@ public class Player : AuditableEntity<Player>
     {
     }
 
-    public Player(string mobile, string nickName, Player parent)
+    public Player(string nickName, Player parent)
     {
         Id = Guid.NewGuid();
-        Mobile = mobile;
         Parent = parent;
         NickName = nickName;
         Status = PlayerStatusType.NotActive;
@@ -79,7 +74,6 @@ public class Player : AuditableEntity<Player>
         Point = 0;
         WinGame = 0;
         LoseGame = 0;
-        LastLogin = DateTime.UtcNow;
 
         AddDomainEvent(new PlayerCreatedEvent(Id));
     }
@@ -94,7 +88,6 @@ public class Player : AuditableEntity<Player>
         int point, int winGame, int loseGame, DateTime lastLogin, DateTime lastLogout)
     {
         Id = id;
-        Mobile = mobile;
         NickName = nickName;
         Parent = parent;
         Status = status;
@@ -142,16 +135,16 @@ public class Player : AuditableEntity<Player>
 
     #region Login/logout
 
-    public void SetPlayerLogin()
+    public void SetPlayerLogin(IDateTime dateTime)
     {
-        LastLogin = DateTime.UtcNow;
+        LastLogin = dateTime.Now;
 
         AddDomainEvent(new PlayerLoggedInEvent(Id));
     }
 
-    public void SetPlayerLogout()
+    public void SetPlayerLogout(IDateTime dateTime)
     {
-        LastLogout = DateTime.UtcNow;
+        LastLogout = dateTime.Now; 
 
         AddDomainEvent(new PlayerLoggedOutEvent(Id));
     }

@@ -11,9 +11,24 @@ public class CustomJsonConverter<T> : JsonConverter<T>
     {
         var obj = JsonSerializer.Deserialize<JsonObject>(ref reader);
 
-        var methodInfo =
-            typeof(T).BaseType?.GetMethod("GetFromJsonObject", BindingFlags.Static | BindingFlags.NonPublic) ??
-            typeof(T).BaseType?.BaseType?.GetMethod("GetFromJsonObject", BindingFlags.Static | BindingFlags.NonPublic);
+        var entity = typeof(T).BaseType;
+        while (entity is not null)
+        {
+            if (entity == typeof(Entity<T>))
+            {
+                break;
+            }
+
+            entity = entity.BaseType;
+        }
+
+        if (entity is null)
+        {
+            return default;
+        }
+        
+        var methodInfo = entity?.GetMethod(nameof(Entity<T>.GetFromJsonObject),
+                             BindingFlags.Static | BindingFlags.NonPublic);
         var res = methodInfo?.Invoke(null, new object?[] { obj }) as T;
         return res;
     }

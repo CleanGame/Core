@@ -12,7 +12,7 @@ public class CustomSerializationContext : ICacheSerializationContext
         var cacheEntities = GetType().Assembly.GetTypes()
             .Where(_ => _.GetCustomAttribute<CacheEntityAttribute>() is not null);
 
-        var methodInfo = GetType().GetMethod("AddEntityConvertor", BindingFlags.NonPublic | BindingFlags.Instance);
+        var methodInfo = GetType().GetMethod(nameof(AddEntityConvertor), BindingFlags.NonPublic | BindingFlags.Instance);
 
         var serializers = new Dictionary<Type, JsonSerializerContext>();
         foreach (var item in cacheEntities)

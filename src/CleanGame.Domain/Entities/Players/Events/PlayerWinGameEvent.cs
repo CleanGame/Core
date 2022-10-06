@@ -2,7 +2,7 @@
 
 namespace CleanGame.Domain.Entities.Players.Events;
 
-public class PlayerWinGameEvent : DomainEvent
+public class PlayerWinGameEvent : IDomainEvent
 {
     public Guid PlayerId { get; }
     public Guid GameId { get; }

@@ -2,7 +2,7 @@
 
 namespace CleanGame.Domain.Entities.Players.Events;
 
-public class PlayerLoggedOutEvent : DomainEvent
+public class PlayerLoggedOutEvent : IDomainEvent
 {
     public Guid PlayerId { get; }
 

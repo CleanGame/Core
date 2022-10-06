@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace CleanGame.Application.Common.Interfaces;
+namespace CleanGame.Application.Shared.Interfaces;
 
 public interface IBackgroundJobService
 {

@@ -1,4 +1,4 @@
-namespace CleanGame.Application.Common.Interfaces;
+namespace CleanGame.Application.Shared.Interfaces;
 
 public interface ICacheTransaction 
 {

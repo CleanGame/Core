@@ -14,7 +14,7 @@ public class ConfigureMapper : IRegister
         var enums = GetType().Assembly.GetTypes()
             .Where(_ => _.IsEnum);
 
-        var methodInfo = GetType().GetMethod("AddEnumMapping", BindingFlags.NonPublic | BindingFlags.Instance);
+        var methodInfo = GetType().GetMethod(nameof(AddEnumMapping), BindingFlags.NonPublic | BindingFlags.Instance);
 
         foreach (var item in enums)
         {
