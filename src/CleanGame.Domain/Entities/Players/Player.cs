@@ -7,7 +7,6 @@ namespace CleanGame.Domain.Entities.Players;
 [CacheEntity(nameof(Player))]
 public class Player : AuditableEntity<Player>
 {
-
     /// <summary>
     /// Parent player
     /// </summary>
@@ -37,12 +36,12 @@ public class Player : AuditableEntity<Player>
     /// <summary>
     /// Total win games
     /// </summary>
-    public int WinGame { get; private set; }
+    public int TotalWinGame { get; private set; }
 
     /// <summary>
     /// Total lose game
     /// </summary>
-    public int LoseGame { get; private set; }
+    public int TotalLoseGame { get; private set; }
 
     /// <summary>
     /// Last player login
@@ -72,8 +71,8 @@ public class Player : AuditableEntity<Player>
         Status = PlayerStatusType.NotActive;
         Level = 0;
         Point = 0;
-        WinGame = 0;
-        LoseGame = 0;
+        TotalWinGame = 0;
+        TotalLoseGame = 0;
 
         AddDomainEvent(new PlayerCreatedEvent(Id));
     }
@@ -84,7 +83,7 @@ public class Player : AuditableEntity<Player>
     /// <remarks>
     /// Required by json converter
     /// </remarks>    
-    private Player(Guid id, string mobile, string nickName, Player parent, PlayerStatusType status, int level,
+    private Player(Guid id, string nickName, Player parent, PlayerStatusType status, int level,
         int point, int winGame, int loseGame, DateTime lastLogin, DateTime lastLogout)
     {
         Id = id;
@@ -93,8 +92,8 @@ public class Player : AuditableEntity<Player>
         Status = status;
         Level = level;
         Point = point;
-        WinGame = winGame;
-        LoseGame = loseGame;
+        TotalWinGame = winGame;
+        TotalLoseGame = loseGame;
         LastLogin = lastLogin;
         LastLogout = lastLogout;
     }
@@ -121,13 +120,13 @@ public class Player : AuditableEntity<Player>
 
     public void IncWinGames(Guid gameId)
     {
-        WinGame++;
+        TotalWinGame++;
         AddDomainEvent(new PlayerWinGameEvent(Id, gameId));
     }
 
     public void IncLoseGames(Guid gameId)
     {
-        LoseGame++;
+        TotalLoseGame++;
         AddDomainEvent(new PlayerLoseGameEvent(Id, gameId));
     }
 
