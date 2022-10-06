@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanGame.Infra", "CleanGam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanGame.API", "CleanGame.API\CleanGame.API.csproj", "{13F587CD-3463-4B1E-AC78-3DFC9DB1EFB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanGame.Domain.Test", "CleanGame.Domain.Test\CleanGame.Domain.Test.csproj", "{34F28B93-DE98-4A36-8119-65CD1CB31F2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{13F587CD-3463-4B1E-AC78-3DFC9DB1EFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13F587CD-3463-4B1E-AC78-3DFC9DB1EFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13F587CD-3463-4B1E-AC78-3DFC9DB1EFB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34F28B93-DE98-4A36-8119-65CD1CB31F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F28B93-DE98-4A36-8119-65CD1CB31F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F28B93-DE98-4A36-8119-65CD1CB31F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F28B93-DE98-4A36-8119-65CD1CB31F2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
